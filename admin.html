@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - ROHAN WEB DESIGNER</title>
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-container" id="loginContainer">
+        <div class="login-box">
+            <h1>Admin Dashboard</h1>
+            <p>ROHAN WEB DESIGNER</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" placeholder="Enter username" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+                <p class="hint">Default: admin / admin123</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="dashboard-container" id="dashboardContainer" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <span>ROHAN</span>
+                <div class="logo-dot"></div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-section="portfolio">
+                    <i class="fas fa-image"></i>
+                    <span>Portfolio</span>
+                </a>
+                <a href="#" class="nav-item" data-section="services">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Services</span>
+                </a>
+                <a href="#" class="nav-item" data-section="contact">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact Info</span>
+                </a>
+                <a href="#" class="nav-item" data-section="about">
+                    <i class="fas fa-user"></i>
+                    <span>About</span>
+                </a>
+                <a href="#" class="nav-item" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <h1 id="sectionTitle">Dashboard</h1>
+                <div class="header-actions">
+                    <span id="userName" class="user-name">Admin</span>
+                    <img src="https://via.placeholder.com/40" alt="Profile" class="profile-pic">
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-image"></i>
+                        <div>
+                            <h3 id="portfolioCount">4</h3>
+                            <p>Projects</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-briefcase"></i>
+                        <div>
+                            <h3 id="servicesCount">6</h3>
+                            <p>Services</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>0</h3>
+                            <p>Messages</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-eye"></i>
+                        <div>
+                            <h3>0</h3>
+                            <p>Visitors</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section id="portfolio" class="content-section">
+                <div class="section-header">
+                    <h2>Portfolio Management</h2>
+                    <button class="add-btn" id="addPortfolioBtn">
+                        <i class="fas fa-plus"></i> Add Project
+                    </button>
+                </div>
+                <div class="items-grid" id="portfolioList"></div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services" class="content-section">
+                <div class="section-header">
+                    <h2>Services Management</h2>
+                    <button class="add-btn" id="addServiceBtn">
+                        <i class="fas fa-plus"></i> Add Service
+                    </button>
+                </div>
+                <div class="items-grid" id="servicesList"></div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="content-section">
+                <h2>Contact Information</h2>
+                <form id="contactForm" class="form-container">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="contactEmail" placeholder="Email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" id="contactPhone" placeholder="Phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <textarea id="contactAddress" placeholder="Full address" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="save-btn">Save Changes</button>
+                </form>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="content-section">
+                <h2>About Section</h2>
+                <form id="aboutForm" class="form-container">
+                    <div class="form-group">
+                        <label>Bio</label>
+                        <textarea id="aboutBio" placeholder="Write your bio" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>About Text</label>
+                        <textarea id="aboutText" placeholder="Write about yourself" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Skills</label>
+                        <div id="skillsList" class="skills-list"></div>
+                        <button type="button" class="add-btn" id="addSkillBtn" style="margin-top: 10px;">
+                            <i class="fas fa-plus"></i> Add Skill
+                        </button>
+                    </div>
+                    <button type="submit" class="save-btn">Save Changes</button>
+                </form>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="content-section">
+                <h2>Settings</h2>
+                <form id="settingsForm" class="form-container">
+                    <div class="form-group">
+                        <label>Site Title</label>
+                        <input type="text" id="siteTitle" placeholder="Site title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Site Description</label>
+                        <textarea id="siteDescription" placeholder="Site description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Social Links</label>
+                        <input type="url" id="instagramLink" placeholder="Instagram URL">
+                        <input type="url" id="facebookLink" placeholder="Facebook URL" style="margin-top: 10px;">
+                        <input type="url" id="twitterLink" placeholder="Twitter URL" style="margin-top: 10px;">
+                    </div>
+                    <button type="submit" class="save-btn">Save Settings</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- Portfolio Modal -->
+    <div class="modal" id="portfolioModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add/Edit Project</h2>
+            <form id="portfolioForm">
+                <div class="form-group">
+                    <label>Project Title</label>
+                    <input type="text" id="portfolioTitle" placeholder="Project title" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="portfolioDescription" placeholder="Project description" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="url" id="portfolioImage" placeholder="Image URL" required>
+                </div>
+                <button type="submit" class="save-btn">Save Project</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Service Modal -->
+    <div class="modal" id="serviceModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add/Edit Service</h2>
+            <form id="serviceForm">
+                <div class="form-group">
+                    <label>Service Name</label>
+                    <input type="text" id="serviceName" placeholder="Service name" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="serviceDescription" placeholder="Service description" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Icon Class (Font Awesome)</label>
+                    <input type="text" id="serviceIcon" placeholder="e.g., fas fa-laptop-code" required>
+                </div>
+                <button type="submit" class="save-btn">Save Service</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+</body>
+</html>
